@@ -8,6 +8,7 @@ class Product(Base):
     __tablename__ = 'products'
 
     id = Column(BigInteger, primary_key=True)
+    code = Column(String, nullable=False)
     description = Column(String, nullable=False)
     status = Column(String, nullable=False)
     value = Column(Numeric, nullable=False)
