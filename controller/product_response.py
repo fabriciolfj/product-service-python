@@ -1,5 +1,9 @@
 from pydantic.v1 import BaseModel
 
 
-class ProductResponse(BaseModel):
+class ProductCodeResponse(BaseModel):
     code: str
+
+
+class ProductResponse(BaseModel):
+    pass
