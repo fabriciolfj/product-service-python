@@ -1,4 +1,4 @@
-from pydantic.v1 import BaseModel
+from pydantic import BaseModel
 
 
 class ProductCodeResponse(BaseModel):
@@ -6,4 +6,6 @@ class ProductCodeResponse(BaseModel):
 
 
 class ProductResponse(BaseModel):
-    pass
+    code: str
+    name: str
+    category: str

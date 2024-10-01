@@ -1,4 +1,4 @@
-from entity.category import Category
+from entity.model import Category
 
 
 class CategoryRepository:
@@ -8,6 +8,11 @@ class CategoryRepository:
 
     def persist(self, category):
         self.session.add(category)
+        self.session.flush()
+        return category
 
     def get_by_name(self, name):
-        return self.session.query(Category).filter_by(name=name).first()
+        return self.session.query(Category).filter_by(description=name).first()
+
+    def get_by_id(self, id):
+        return self.session.query(Category).filter_by(id=id).first()

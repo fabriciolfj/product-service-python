@@ -1,16 +1,24 @@
-from uuid import uuid4
+import uuid
 
 from controller.product_request import ProductRequest
-from entity.category import Category
-from entity.product import Product
+from controller.product_response import ProductResponse
+from entity.model import Product, Category
 from entity.status import Status
 
 
 def to_entity(request: ProductRequest):
     category = Category(description=request.description)
     return Product(
-        code=uuid4.uuid4(),
+        code=str(uuid.uuid4()),
         category=category,
+        description=request.description,
         value=request.value,
-        status=Status.PENDING.__str__()
+        status=Status.PENDING.value
+    )
+
+def to_response(product: Product):
+    return ProductResponse(
+        code=product.code,
+        category=product.category.description,
+        name=product.description,
     )

@@ -1,23 +1,15 @@
 import logging
 
-from entity.product import Product
-from service.category_service import CategoryService
+from entity.model import Product
 
 
 class ProductRepository:
 
-    def __init__(self, session, category_service: CategoryService):
+    def __init__(self, session):
         self.session = session
-        self.category_service = category_service
 
     def persist(self, product):
         try:
-            category = self.category_service.find_by_name(product.category.name)
-
-            if not category:
-                category = self.category_service.save(category)
-
-            product.category = category
             self.session.add(product)
             return product
         except Exception as e:

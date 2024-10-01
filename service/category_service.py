@@ -1,10 +1,16 @@
+from repository.category_repository import CategoryRepository
+
+
 class CategoryService:
 
-    def __init__(self, repository):
+    def __init__(self, repository: CategoryRepository):
         self.repository = repository
 
     def save(self, category):
-        self.repository.save(category)
+        return self.repository.persist(category)
 
     def find_by_name(self, name):
-        return self.repository.find_by_name(name)
+        return self.repository.get_by_name(name)
+
+    def find_by_id(self, id):
+        return self.repository.get_by_id(id)
